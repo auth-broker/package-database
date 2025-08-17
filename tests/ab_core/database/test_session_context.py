@@ -2,8 +2,8 @@ import pytest
 from sqlalchemy import select
 from tests.models import User
 
-from obo_core.database.databases import Database
-from obo_core.database.session_context import db_session_async_cm, db_session_sync_cm
+from ab_core.database.databases import Database
+from ab_core.database.session_context import db_session_async_cm, db_session_sync_cm
 
 
 def test_db_session_sync_commits(tmp_database_sync: Database):

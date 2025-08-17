@@ -2,7 +2,7 @@ import pytest
 from sqlalchemy import inspect, select
 from tests.models import User
 
-from obo_core.database.databases import Database
+from ab_core.database.databases import Database
 
 
 def test_database_sync(tmp_database_sync: Database):

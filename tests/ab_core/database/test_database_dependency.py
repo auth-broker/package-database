@@ -4,8 +4,8 @@ from unittest.mock import patch
 
 from pydantic import BaseModel
 
-from obo_core.database.databases import Database, SQLAlchemyDatabase
-from obo_core.dependency import Depends, inject
+from ab_core.database.databases import Database, SQLAlchemyDatabase
+from ab_core.dependency import Depends, inject
 
 
 def test_database_dependency():

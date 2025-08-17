@@ -5,7 +5,7 @@ requires = ["hatchling"]
 [dependency-groups]
 dev = [
   "isort>=6.0.1,<7",
-  "obo-test-fixtures",
+  "ab-test-fixtures",
   "pre-commit>=4.2.0,<5",
   "pytest-asyncio>=1.0.0,<2",
   "pytest-cov>=6.2.1,<7",
@@ -17,14 +17,14 @@ dev = [
 [project]
 authors = [{email = "53892067+mattcoulter7@users.noreply.github.com", name = "Matthew Coulter"}]
 dependencies = [
-  "obo-dependency",
+  "ab-dependency",
   "pydantic>=2.11.7,<3",
   "slugify>=0.0.1,<0.0.2",
   "sqlmodel>=0.0.24,<0.0.25",
   "uuid7>=0.1.0,<0.2"
 ]
 description = ""
-name = "obo-database"
+name = "ab-database"
 readme = "README.md"
 requires-python = ">=3.12, <4"
 version = "0.1.0"
@@ -89,13 +89,13 @@ vertica-sync = [
 ]
 
 [tool.hatch.build.targets.sdist]
-include = ["src/obo_core"]
+include = ["src/ab_core"]
 
 [tool.hatch.build.targets.wheel]
-include = ["src/obo_core"]
+include = ["src/ab_core"]
 
 [tool.hatch.build.targets.wheel.sources]
-"src/obo_core" = "obo_core"
+"src/ab_core" = "ab_core"
 
 [tool.pytest.ini_options]
 asyncio_default_fixture_loop_scope = "session"
@@ -127,9 +127,3 @@ select = [
   "UP", # pyupgrade
   "W" # pycodestyle warnings
 ]
-
-[tool.uv]
-
-[tool.uv.sources]
-obo-dependency = {editable = true, path = "../obo-dependency"}
-obo-test-fixtures = {editable = true, path = "../../obo_test/obo-test-fixtures"}

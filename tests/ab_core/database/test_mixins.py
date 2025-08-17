@@ -4,7 +4,7 @@ import pytest
 from sqlalchemy import inspect, select
 from sqlmodel import Field
 
-from obo_core.database.mixins import CreatedAtMixin, DeletedMixin, IDMixin, UpdatedAtMixin
+from ab_core.database.mixins import CreatedAtMixin, DeletedMixin, IDMixin, UpdatedAtMixin
 
 
 class FakeModel(IDMixin, CreatedAtMixin, UpdatedAtMixin, DeletedMixin, table=True):
