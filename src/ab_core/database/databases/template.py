@@ -1,9 +1,7 @@
+from collections.abc import AsyncIterator, Generator
 from contextlib import asynccontextmanager, contextmanager
 from typing import (
-    AsyncIterator,
-    Generator,
     Literal,
-    Optional,
     override,
 )
 
@@ -28,7 +26,7 @@ class TemplateDatabase(DatabaseBase[TemplateSession, TemplateAsyncSession]):
     def sync_session(
         self,
         *,
-        current_session: Optional[TemplateSession] = None,
+        current_session: TemplateSession | None = None,
     ) -> Generator[TemplateSession, None, None]:
         raise NotImplementedError()
 
@@ -37,7 +35,7 @@ class TemplateDatabase(DatabaseBase[TemplateSession, TemplateAsyncSession]):
     async def async_session(
         self,
         *,
-        current_session: Optional[TemplateAsyncSession] = None,
+        current_session: TemplateAsyncSession | None = None,
     ) -> AsyncIterator[TemplateAsyncSession]:
         raise NotImplementedError()
 

@@ -3,7 +3,6 @@ from typing import (
     AsyncContextManager,
     ContextManager,
     Generic,
-    Optional,
     TypeVar,
 )
 
@@ -18,14 +17,14 @@ class DatabaseBase(BaseModel, Generic[SYNC_SESSION, ASYNC_SESSION], ABC):
     def sync_session(
         self,
         *,
-        current_session: Optional[ASYNC_SESSION] = None,
+        current_session: ASYNC_SESSION | None = None,
     ) -> ContextManager[SYNC_SESSION]: ...
 
     @abstractmethod
     async def async_session(
         self,
         *,
-        current_session: Optional[ASYNC_SESSION] = None,
+        current_session: ASYNC_SESSION | None = None,
     ) -> AsyncContextManager[ASYNC_SESSION]: ...
 
     @abstractmethod
