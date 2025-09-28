@@ -1,14 +1,19 @@
-from datetime import datetime, timezone
+"""Mixin to add an "updated_at" timestamp column to SQLModel models."""
 
-from sqlalchemy import event
-from sqlalchemy.orm import Mapper
+from datetime import datetime
+
+from sqlalchemy import Column, DateTime, func
 from sqlmodel import Field, SQLModel
 
 
 class UpdatedAtMixin(SQLModel):
-    updated_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
+    """Mixin to add an updated_at timestamp to a SQLModel model."""
 
-
-@event.listens_for(UpdatedAtMixin, "before_update", propagate=True)
-def timestamp_updated(mapper: Mapper, connection, target: UpdatedAtMixin):
-    target.updated_at = datetime.now(timezone.utc)
+    updated_at: datetime = Field(
+        sa_column=Column(
+            DateTime(timezone=True),
+            server_default=func.now(),
+            onupdate=func.now(),
+            nullable=False,
+        ),
+    )
