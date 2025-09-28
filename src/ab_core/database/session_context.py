@@ -21,10 +21,10 @@ def db_session_sync(
         yield sync_session
 
 
-db: Annotated[Database, Depends(Database, persist=True)] = Depends(Database, persist=True)()
-
-
-async def db_session_async():
+@inject
+async def db_session_async(
+    db: Annotated[Database, Depends(Database, persist=True)] = sentinel(),
+):
     """Provide an asynchronous database session context."""
     async with db.async_session() as async_session:
         yield async_session
